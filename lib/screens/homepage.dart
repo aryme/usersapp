@@ -1,97 +1,143 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:usersapp/authentification/values/values.dart';
-class EmailConfirmationPage2 extends StatefulWidget {
+import 'package:usersapp/screens/homepage1.dart';
+
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
-  _EmailConfirmationPage2State createState() => _EmailConfirmationPage2State();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _EmailConfirmationPage2State extends State<EmailConfirmationPage2> {
- 
-
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('hello user'),
-
-        toolbarHeight: 150,
-        backgroundColor: Color(AppColors1.blue),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(50),
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              SizedBox(height: 30,),
-              //if (currentPage == 'email_input')
-                Column(
-                  children: [
-                    //SizedBox(height: 20,),
-                    Text('Recherchez le type de Elbet que vous voulez'),
-                    SizedBox(height: 20,),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Card(
-                        elevation: 7, // Ajoute une ombre à la carte
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0), // Définit la forme de la carte
+      body: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              color: AppColors.linkedInBlue,
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(50),
+              ),
+            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 50),
+                ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 30),
+                  title: Text(
+                    'Bonjour User!',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          color: Colors.white,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: TextField(
-                          //controller: emailController,
-                            maxLength: 6, // Limite la longueur à 6 caractères
-                            decoration: InputDecoration(labelText: 'Entrez votre e-mail ',
-
-                              labelStyle: TextStyle(
-                                color: Colors.indigo, // Couleur du texte du label
-                              ),
-                            ),
-
-                          ),
-
+                  ),
+                  subtitle: Text(
+                    'Bienvenue dans ELbet',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: Colors.white54,
                         ),
-
-                      ),
-
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.language,
+                      color: Colors.white,
                     ),
-                    SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: (){},
-          child: Text('Vérifier l\'e-mail'),
-          style: ElevatedButton.styleFrom(
-            primary: Colors.indigo, // Couleur de fond du bouton
-            textStyle: TextStyle(
-              color: Colors.white, // Couleur du texte du bouton
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0), // BorderRadius circulaire
-            ),
-
-          ),
-        ),
-                  ],
+                    onPressed: () {
+                      // Logique pour changer la langue ici
+                    },
+                  ),
                 ),
-                 
-             
-                
-            ],
+                const SizedBox(height: 30),
+              ],
+            ),
           ),
-        ),
+          const SizedBox(height: 69),
+
+          // Texte centré
+         const Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Text(
+      'Choisissez le type de poésie que vous préférez,',
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 17,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    Text(
+      'populaire ou classique?',
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 17,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ],
+),
+
+const SizedBox(height: 90),
+          // Conteneur centré qui enveloppe le champ de saisie et le bouton
+          Center(
+            child: Container(
+              width: 300, // Ajuster la largeur selon vos besoins
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(6),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 5),
+                   // color: Theme.of(context).primaryColor.withOpacity(.2),
+                   color: AppColors.indigo200,
+                    spreadRadius: 4,
+                    blurRadius: 5,
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  const TextField(
+                    maxLength: 12, // Limite la longueur à 6 caractères
+                    decoration: InputDecoration(
+                      labelText: 'Entrez le type de poésie',
+                      labelStyle: TextStyle(
+                        color: Colors.black, // Couleur du texte du label
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // Ajouter un bouton
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => MyWidget());
+
+                     
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.linkedInBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      'Afficher le Resultat',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
-  }}
-
-
-
-
-  
-class AppColors1 {
-  static const int blue = 0xFF0000FF; // Replace with the actual color value
+  }
 }

@@ -156,7 +156,7 @@ class _LoginScreen4State extends State<LoginScreen4> {
             height: Sizes.HEIGHT_40,
             onPressed: () {
 
-              Get.to(EmailConfirmationPage2());
+              Get.to(MyHomePage());
             },
           ),
         )
